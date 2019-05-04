@@ -25,6 +25,7 @@ class Game:
         player[1].set_opponent(player[0])
 
     def print_instructions(self):
+        print()
         print('Each Player\'s contains 3 Battleships, 3 Destroyers, 2 Submarines and 2 Cruisers placed on a 9x9 Board.')
         print('Maximum', self.maxScore, 'points can be scored and whoever scores this points first will win the game.')
         print('Each Player will get', self.turns, 'turns to guess other player\'s armada\'s location.')
