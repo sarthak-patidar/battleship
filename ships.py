@@ -79,7 +79,7 @@ class Ship:
 
                 for i in range(length):
                     tile = grid[row - 1 + i][col - 1]
-                    if tile.hasShip:
+                    if tile.has_ship():
                         has_ship.append(True)
                     else:
                         has_ship.append(False)
@@ -90,7 +90,7 @@ class Ship:
 
                 for j in range(length):
                     tile = grid[row - 1][col - 1 + j]
-                    if tile.hasShip:
+                    if tile.has_ship():
                         has_ship.append(True)
                     else:
                         has_ship.append(False)

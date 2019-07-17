@@ -44,3 +44,11 @@ __ARMADA__ = {
         "length": 4
     }
 }
+
+# TILE CONFIG
+__TILE__ = {
+    "values": {
+        "empty": "X",
+        "default": "-"
+    }
+}
