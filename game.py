@@ -1,13 +1,14 @@
+from globals import __GAME__
 from player import Player
 from utils import get_coordinate, player_input
 
 
 class Game:
     def __init__(self):
-        self.players = 2
+        self.players = __GAME__["players"]
         self.registry = self.get_players()
         self.maxScore = self.get_max_score()
-        self.turns = 10
+        self.turns = __GAME__["turns"]
         self.play()
 
     def get_players(self):

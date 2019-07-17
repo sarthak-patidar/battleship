@@ -1,3 +1,4 @@
+from globals import __SHIP__
 import random
 from itertools import count
 
@@ -17,10 +18,7 @@ class Ship:
         self.update_loc()
 
     def get_type(self):
-        if self.type:
-            return 'Vertical'
-
-        return 'Horizontal'
+        return __SHIP__["alignment"][self.type]
 
     def update_loc(self):
         if not self.loc:

@@ -1,11 +1,12 @@
+from globals import __BOARD__
 from tile import Tile
 
 
 class Board:
-    def __init__(self, owner):  # Owner must be a player instance
+    def __init__(self, owner):
         self.owner = owner
-        self.maxRow = 9
-        self.maxCol = 9
+        self.maxRow = __BOARD__["max_rows"]
+        self.maxCol = __BOARD__["max_cols"]
         self.armada = []
         self.grid = self.create_grid()
 

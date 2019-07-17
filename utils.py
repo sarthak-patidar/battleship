@@ -1,7 +1,10 @@
+from globals import __BOARD__
+
+
 def get_coordinate(input_msg):
 
-    min_val = 1
-    max_val = 9
+    min_val = __BOARD__["min_rows"]
+    max_val = __BOARD__["max_rows"]
 
     running = True
 
@@ -19,7 +22,7 @@ def get_coordinate(input_msg):
         else:
             running = False
 
-        return coordinate
+    return coordinate
 
 
 def player_input(msg):

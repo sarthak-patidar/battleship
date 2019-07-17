@@ -1,3 +1,6 @@
+from globals import __BOARD__
+
+
 class Tile:
     def __init__(self, row, col):
         self.row = row
@@ -7,12 +10,16 @@ class Tile:
         self.coordinate = str(self.row) + "," + str(self.column)  # For Debugging Purposes
         self.value = '-'
         self.ship = None
+        self.corners = {
+            "rows": [__BOARD__["min_rows"], __BOARD__["max_rows"]],
+            "cols": [__BOARD__["min_cols"], __BOARD__["max_cols"]]
+        }
 
     def is_border(self):
         row = self.row
         col = self.column
 
-        if row == 1 or row == 9 or col == 9 or col == 1:
+        if row in self.corners["rows"] or col in self.corners["cols"]:
             return True
         return False
 
