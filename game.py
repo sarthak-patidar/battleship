@@ -84,5 +84,10 @@ class Game:
 
 if __name__ == "__main__":
     game = Game()
-    game.play()
+    try:
+        game.play()
+    except EOFError:
+        print("\nExiting game.")
+        game.display_result()
+
 
