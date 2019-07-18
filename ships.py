@@ -1,3 +1,4 @@
+from globals import __SHIP__
 import random
 from itertools import count
 
@@ -17,10 +18,7 @@ class Ship:
         self.update_loc()
 
     def get_type(self):
-        if self.type:
-            return 'Vertical'
-
-        return 'Horizontal'
+        return __SHIP__["alignment"][self.type]
 
     def update_loc(self):
         if not self.loc:
@@ -33,7 +31,6 @@ class Ship:
                     try:
                         tile = self.owner.board.grid[row - 1][col + j - 1]
                         tile.add_ship(self)
-                        # tile.value = self.short_name
                         self.loc.append(tile)
                     except IndexError:
                         print("Horizontal Index Error while placing warships at: ", row, col + j)
@@ -44,7 +41,6 @@ class Ship:
                     try:
                         tile = self.owner.board.grid[row + i - 1][col - 1]
                         tile.add_ship(self)
-                        # tile.value = self.short_name
                         self.loc.append(tile)
                     except IndexError:
                         print("Vertical Index Error while placing warships at: ", row + i, col)
@@ -81,7 +77,7 @@ class Ship:
 
                 for i in range(length):
                     tile = grid[row - 1 + i][col - 1]
-                    if tile.hasShip:
+                    if tile.has_ship():
                         has_ship.append(True)
                     else:
                         has_ship.append(False)
@@ -92,7 +88,7 @@ class Ship:
 
                 for j in range(length):
                     tile = grid[row - 1][col - 1 + j]
-                    if tile.hasShip:
+                    if tile.has_ship():
                         has_ship.append(True)
                     else:
                         has_ship.append(False)
@@ -107,29 +103,3 @@ class Ship:
 
     def __str__(self):
         return self.name + '(' + str(self.length) + ')'
-
-
-submarine = {
-    "name": "submarine",
-    "short_name": "S",
-    "quantity": 2,
-    "length": 1
-}
-destroyer = {
-    "name": "destroyer",
-    "short_name": "D",
-    "quantity": 3,
-    "length": 2
-}
-cruiser = {
-    "name": "cruiser",
-    "short_name": "C",
-    "quantity": 2,
-    "length": 3
-}
-battleship = {
-    "name": "battleship",
-    "short_name": "B",
-    "quantity": 3,
-    "length": 4
-}

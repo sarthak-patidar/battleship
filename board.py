@@ -1,11 +1,12 @@
+from globals import __BOARD__
 from tile import Tile
 
 
 class Board:
-    def __init__(self, owner):  # Owner must be a player instance
+    def __init__(self, owner):
         self.owner = owner
-        self.maxRow = 9
-        self.maxCol = 9
+        self.maxRow = __BOARD__["max_rows"]
+        self.maxCol = __BOARD__["max_cols"]
         self.armada = []
         self.grid = self.create_grid()
 
@@ -23,13 +24,6 @@ class Board:
             row = ""
             for tile in arr:
                 row = row + str(tile.value) + " "
-            print(row)
-
-    def print_coordinates(self):
-        for arr in self.grid:
-            row = ""
-            for tile in arr:
-                row = row + str(tile.coordinate) + " "
             print(row)
 
     def __str__(self):

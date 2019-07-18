@@ -1,49 +1,49 @@
+from globals import __BOARD__, __TILE__
+
+
 class Tile:
     def __init__(self, row, col):
         self.row = row
         self.column = col
-        self.hasShip = False
         self.bombed = False
-        self.coordinate = str(self.row) + "," + str(self.column)  # For Debugging Purposes
-        self.value = '-'
+        self.coordinate = str(self.row) + "," + str(self.column)
+        self.value = __TILE__["values"]["default"]
         self.ship = None
+        self.corners = {
+            "rows": [__BOARD__["min_rows"], __BOARD__["max_rows"]],
+            "cols": [__BOARD__["min_cols"], __BOARD__["max_cols"]]
+        }
 
-    def is_border(self):
-        row = self.row
-        col = self.column
-
-        if row == 1 or row == 9 or col == 9 or col == 1:
+    def has_ship(self):
+        if self.ship is not None:
             return True
+
         return False
 
     def add_ship(self, ship):
         self.ship = ship
-        self.hasShip = True    # add ships
 
-    def del_ship(self):  # Always call this method after calling is_bombed() method
+    def bomb_ship(self):
         self.is_bombed()
-        if self.hasShip:
+        if self.has_ship():
             self.value = self.ship.short_name
+            self.ship = None
         else:
-            self.value = "X"
-
-        self.ship = None
-        self.hasShip = False   # delete ship if guessed by player
+            self.value = __TILE__["values"]["empty"]
 
     def is_bombed(self):
         if not self.bombed:
             self.bombed = True
 
     def sink_ship(self):
-        if self.hasShip:
+        if self.has_ship():
             count = 0
             tiles = self.ship.loc
             for tile in tiles:
-                count = count + 1
-                tile.del_ship()
+                count += 1
+                tile.bomb_ship()
             return count
         else:
-            self.del_ship()
             return False
 
     def __str__(self):

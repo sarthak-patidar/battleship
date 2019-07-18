@@ -1,14 +1,16 @@
+#!/usr/bin/env python3.6
+
+from globals import __GAME__
 from player import Player
-from utils import get_coordinate, player_input
+from utils import get_coordinate, player_input, print_game_instructions
 
 
 class Game:
     def __init__(self):
-        self.players = 2
+        self.players = __GAME__["players"]
         self.registry = self.get_players()
         self.maxScore = self.get_max_score()
-        self.turns = 10
-        self.play()
+        self.turns = __GAME__["turns"]
 
     def get_players(self):
         players = []
@@ -24,16 +26,9 @@ class Game:
         player[0].set_opponent(player[1])
         player[1].set_opponent(player[0])
 
-    def print_instructions(self):
-        print()
-        print('Each Player\'s contains 3 Battleships, 3 Destroyers, 2 Submarines and 2 Cruisers placed on a 9x9 Board.')
-        print('Maximum', self.maxScore, 'points can be scored and whoever scores this points first will win the game.')
-        print('Each Player will get', self.turns, 'turns to guess other player\'s armada\'s location.')
-        print()
-
     def play(self):
         self.set_opponents()
-        self.print_instructions()
+        print_game_instructions(self.turns, self.maxScore)
         players = self.registry
 
         for i in range(self.turns):
@@ -87,4 +82,7 @@ class Game:
         return self.registry[0].__str__() + " v/s " + self.registry[1].__str__()
 
 
-game = Game()
+if __name__ == "__main__":
+    game = Game()
+    game.play()
+
