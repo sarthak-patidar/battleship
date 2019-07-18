@@ -44,6 +44,7 @@ class Tile:
                 tile.bomb_ship()
             return count
         else:
+            self.bomb_ship()
             return False
 
     def __str__(self):
