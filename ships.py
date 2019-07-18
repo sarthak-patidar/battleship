@@ -31,7 +31,6 @@ class Ship:
                     try:
                         tile = self.owner.board.grid[row - 1][col + j - 1]
                         tile.add_ship(self)
-                        # tile.value = self.short_name
                         self.loc.append(tile)
                     except IndexError:
                         print("Horizontal Index Error while placing warships at: ", row, col + j)
@@ -42,7 +41,6 @@ class Ship:
                     try:
                         tile = self.owner.board.grid[row + i - 1][col - 1]
                         tile.add_ship(self)
-                        # tile.value = self.short_name
                         self.loc.append(tile)
                     except IndexError:
                         print("Vertical Index Error while placing warships at: ", row + i, col)
@@ -105,29 +103,3 @@ class Ship:
 
     def __str__(self):
         return self.name + '(' + str(self.length) + ')'
-
-
-submarine = {
-    "name": "submarine",
-    "short_name": "S",
-    "quantity": 2,
-    "length": 1
-}
-destroyer = {
-    "name": "destroyer",
-    "short_name": "D",
-    "quantity": 3,
-    "length": 2
-}
-cruiser = {
-    "name": "cruiser",
-    "short_name": "C",
-    "quantity": 2,
-    "length": 3
-}
-battleship = {
-    "name": "battleship",
-    "short_name": "B",
-    "quantity": 3,
-    "length": 4
-}
