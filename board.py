@@ -26,12 +26,5 @@ class Board:
                 row = row + str(tile.value) + " "
             print(row)
 
-    def print_coordinates(self):
-        for arr in self.grid:
-            row = ""
-            for tile in arr:
-                row = row + str(tile.coordinate) + " "
-            print(row)
-
     def __str__(self):
         return self.owner + "'s Board"
