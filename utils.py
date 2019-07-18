@@ -27,3 +27,12 @@ def get_coordinate(input_msg):
 
 def player_input(msg):
     return input(msg)
+
+
+def print_game_instructions(max_turns, max_score):
+    print()
+    print('Each Player\'s contains 3 Battleships, 3 Destroyers, 2 Submarines and 2 Cruisers placed on a 9x9 Board.')
+    print('Maximum', max_score, 'points can be scored and whoever scores this points first will win the game.')
+    print('Each Player will get', max_turns, 'turns to guess other player\'s armada\'s location.')
+    print()
+
